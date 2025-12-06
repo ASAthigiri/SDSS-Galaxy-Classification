@@ -49,5 +49,6 @@ subclass
 11. Testing Manual Inputs Predicted STARFORMING / STARBURST for test
     samples.
 
-Conclusion A complete ML pipeline built for SDSS galaxy classification
+## Conclusion
+A complete ML pipeline built for SDSS galaxy classification
 with Random Forest as final model.
