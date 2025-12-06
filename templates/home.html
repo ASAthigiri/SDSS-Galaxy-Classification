@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3')
+                        no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 35px;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 14px;
+            color: white;
+            box-shadow: 0 0 18px rgba(0,0,0,0.6);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Auto responsive grid */
+        .grid {
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .input-box {
+            position: relative;
+            width: 80%;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #888;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            outline: none;
+        }
+
+        .input-box label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            padding: 0 5px;
+            color: #555;
+            font-size: 14px;
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        /* floating label animation */
+        .input-box input:focus + label,
+        .input-box input:not(:placeholder-shown) + label {
+            top: -9px;
+            font-size: 12px;
+            color: #2ecc71;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #2ecc71;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            color: white;
+            cursor: pointer;
+            margin-top: 25px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Enter Galaxy Parameters</h2>
+
+        <form action="/submit" method="post">
+
+            <div class="grid">
+
+                {% for f in feature_names %}
+                <div class="input-box">
+                    <input type="text" name="{{ f }}" placeholder=" " required>
+                    <label>{{ f }}</label>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <button type="submit">Predict</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3') 
+                        no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result-box {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 30px;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        h2, h3, p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="result-box">
+
+        {% if error %}
+            <h3 style="color:#ff4c4c">Error: {{ message }}</h3>
+        {% else %}
+            <h2>Predicted Class: {{ prediction }}</h2>
+
+            {% if probability %}
+                <p><strong>Model Confidence:</strong> {{ probability }}</p>
+            {% endif %}
+        {% endif %}
+
+        <a href="/">Back</a>
+    </div>
+
+</body>
+</html>
